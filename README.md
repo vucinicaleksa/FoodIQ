@@ -41,34 +41,34 @@ FoodIQ je pametna aplikacija, ki omogoča uporabnikom skeniranje izdelkov z mobi
 <table style="margin: 0 auto;">
   <tr>
     <td align="center">
-      <img src="https://github.com/user-attachments/assets/756f872b-4a7b-41cc-8b9a-2ab5a79167f2" width="180">
+      <img src="https://github.com/user-attachments/assets/62d7006d-12b9-49fb-9b84-c64371bd5f84" width="160" style="border-radius: 12px; border: 2px solid #f0f0f0;">
       <br>
       <sub><b>Prijava</b></sub>
     </td>
     <td align="center">
-      <img src="https://github.com/user-attachments/assets/5ae14641-2255-465b-b639-b5759edda3a6" width="180">
+      <img src="https://github.com/user-attachments/assets/e04f2254-57d1-4ce7-9a4b-f69262278aab" width="160" style="border-radius: 12px; border: 2px solid #f0f0f0;">
       <br>
       <sub><b>Skeniranje</b></sub>
     </td>
     <td align="center">
-      <img src="https://github.com/user-attachments/assets/b8fd523f-05d0-4ba5-ba7e-ed463880cac0" width="180">
+      <img src="https://github.com/user-attachments/assets/669a951f-a306-4187-81d7-d088e0d27dc5" width="160" style="border-radius: 12px; border: 2px solid #f0f0f0;">
       <br>
       <sub><b>Produkt</b></sub>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="https://github.com/user-attachments/assets/e6d1b14c-082a-425f-bf02-53a9827c7726" width="180">
+      <img src="https://github.com/user-attachments/assets/01b0e6f6-144b-4503-be83-c425d2181599" width="160" style="border-radius: 12px; border: 2px solid #f0f0f0;">
       <br>
       <sub><b>Izdelki</b></sub>
     </td>
     <td align="center">
-      <img src="https://github.com/user-attachments/assets/c37df1d6-8941-4685-809e-f299f7a932a0" width="180">
+      <img src="https://github.com/user-attachments/assets/8ce5e94a-5e60-44f2-8f40-e3ef67167f2c" width="160" style="border-radius: 12px; border: 2px solid #f0f0f0;">
       <br>
       <sub><b>Recepti</b></sub>
     </td>
     <td align="center">
-      <img src="https://github.com/user-attachments/assets/29856af2-0f14-4c30-a358-bb5f6ef21165" width="180">
+      <img src="https://github.com/user-attachments/assets/1f919a13-bf35-46d7-8071-5378799a36d1" width="160" style="border-radius: 12px; border: 2px solid #f0f0f0;">
       <br>
       <sub><b>Profil</b></sub>
     </td>
@@ -76,8 +76,7 @@ FoodIQ je pametna aplikacija, ki omogoča uporabnikom skeniranje izdelkov z mobi
 </table>
 
 </div>
-
-## 🛠️ Uporabljene tehnologije
+ 🛠️ Uporabljene tehnologije
 
 - **Flutter** - Razvoj mobilne aplikacije
 - **Dart** - Programski jezik

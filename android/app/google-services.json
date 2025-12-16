@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "827044059662",
+    "project_id": "foodiq-ec249",
+    "storage_bucket": "foodiq-ec249.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:827044059662:android:9af5ce78c7214da06f7a5f",
+        "android_client_info": {
+          "package_name": "com.rvir.foodiq"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfFdOrsrKQEorEnRYTdih7EzLgpOHpsds"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

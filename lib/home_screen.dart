@@ -32,9 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     Navigator.push(
       context,
-      MaterialPageRoute(
-        builder: (_) => ScanScreen(barcode: code),
-      ),
+      MaterialPageRoute(builder: (_) => ScanScreen(barcode: code)),
     );
   }
 
@@ -77,7 +75,6 @@ class _HomeScreenState extends State<HomeScreen> {
               label: Text(formattedDate),
               onPressed: _pickDate,
             ),
-
             const SizedBox(height: 12),
 
             // 🔹 DAILY SUMMARY
@@ -85,10 +82,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
             const SizedBox(height: 12),
 
-            // 🔹 GOAL
-            const GoalWidget(),
-
-            const SizedBox(height: 20),
             const Divider(),
 
             // 🔹 MANUAL BARCODE INPUT

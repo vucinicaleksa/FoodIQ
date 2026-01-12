@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  mobile_scanner: ^4.0.1
+  mobile_scanner: ^3.5.0
   http: ^1.2.1
 
   cupertino_icons: ^1.0.8

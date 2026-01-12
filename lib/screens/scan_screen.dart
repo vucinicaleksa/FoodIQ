@@ -1,11 +1,10 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import '../services/open_food_facts_service.dart';
 
 class ScanScreen extends StatefulWidget {
-  final String? barcode;
+  final String barcode;
 
-  const ScanScreen({super.key, this.barcode});
+  const ScanScreen({super.key, required this.barcode});
 
   @override
   State<ScanScreen> createState() => _ScanScreenState();
@@ -13,62 +12,51 @@ class ScanScreen extends StatefulWidget {
 
 class _ScanScreenState extends State<ScanScreen> {
   Map<String, dynamic>? product;
-  bool loading = false;
+  bool loading = true;
 
   @override
   void initState() {
     super.initState();
-    if (widget.barcode != null) {
-      fetchProduct(widget.barcode!);
-    }
+    _loadProduct();
   }
 
-  Future<void> fetchProduct(String code) async {
-    setState(() => loading = true);
-
-    final url =
-        'https://world.openfoodfacts.org/api/v0/product/$code.json';
-
-    final response = await http.get(Uri.parse(url));
-    final data = json.decode(response.body);
-
-    if (data['status'] == 1) {
-      setState(() {
-        product = data['product'];
-      });
-    }
-
-    setState(() => loading = false);
+  Future<void> _loadProduct() async {
+    final data = await OpenFoodFactsService.fetchProduct(widget.barcode);
+    setState(() {
+      product = data;
+      loading = false;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Proizvod')),
-      body: loading
-          ? const Center(child: CircularProgressIndicator())
-          : product == null
-              ? const Center(child: Text('Proizvod nije pronađen'))
+      appBar: AppBar(title: const Text('Product details')),
+      body:
+          loading
+              ? const Center(child: CircularProgressIndicator())
+              : product == null
+              ? const Center(child: Text('Product not found'))
               : Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        product!['product_name'] ?? 'Nepoznato',
-                        style: const TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                        ),
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      product!['name'],
+                      style: const TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
                       ),
-                      const SizedBox(height: 10),
-                      Text('Kalorije: ${product!['nutriments']?['energy-kcal_100g'] ?? '-'} kcal'),
-                      Text('Proteini: ${product!['nutriments']?['proteins_100g'] ?? '-'} g'),
-                      Text('Masti: ${product!['nutriments']?['fat_100g'] ?? '-'} g'),
-                      Text('Ugljikohidrati: ${product!['nutriments']?['carbohydrates_100g'] ?? '-'} g'),
-                    ],
-                  ),
+                    ),
+                    const SizedBox(height: 12),
+                    Text('Calories: ${product!['calories']} kcal'),
+                    Text('Proteins: ${product!['proteins']} g'),
+                    Text('Fats: ${product!['fats']} g'),
+                    Text('Carbohydrates: ${product!['carbs']} g'),
+                  ],
                 ),
+              ),
     );
   }
 }

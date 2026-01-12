@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'screens/scan_screen.dart';
+import 'screens/barcode_scanner_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -22,9 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     Navigator.push(
       context,
-      MaterialPageRoute(
-        builder: (_) => ScanScreen(barcode: code),
-      ),
+      MaterialPageRoute(builder: (_) => ScanScreen(barcode: code)),
     );
   }
 
@@ -34,10 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text('FoodIQ'),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: _logout,
-          )
+          IconButton(icon: const Icon(Icons.logout), onPressed: _logout),
         ],
       ),
       body: Padding(
@@ -76,12 +72,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
             ElevatedButton.icon(
               icon: const Icon(Icons.qr_code_scanner),
-              label: const Text('Skeniraj barcode'),
+              label: const Text('Scan barcode'),
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (_) => const ScanScreen(),
+                    builder: (_) => const BarcodeScannerScreen(),
                   ),
                 );
               },

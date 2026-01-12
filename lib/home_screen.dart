@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import 'screens/scan_screen.dart';
 import 'screens/barcode_scanner_screen.dart';
-
+import 'services/ai_question_widget.dart';
 // widgets
 import 'widgets/daily_summary_widget.dart';
 import 'widgets/today_products_list.dart';
@@ -32,7 +32,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (_) => ScanScreen(barcode: code)),
+      MaterialPageRoute(
+        builder: (_) => ScanScreen(barcode: code),
+      ),
     );
   }
 
@@ -75,6 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
               label: Text(formattedDate),
               onPressed: _pickDate,
             ),
+
             const SizedBox(height: 12),
 
             // 🔹 DAILY SUMMARY
@@ -82,8 +85,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
             const SizedBox(height: 12),
 
+            // 🔹 GOAL
+            const GoalWidget(),
+          
+            const SizedBox(height: 20),
             const Divider(),
-
+            const AIQuestionWidget(),
             // 🔹 MANUAL BARCODE INPUT
             const Text(
               'Enter barcode manually',

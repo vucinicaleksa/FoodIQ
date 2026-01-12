@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'screens/scan_screen.dart';
 import 'screens/barcode_scanner_screen.dart';
+import 'widgets/daily_summary_widget.dart';
+import 'widgets/today_products_list.dart';
+import 'widgets/calories_chart.dart';
+import 'widgets/goal_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -36,13 +40,26 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(icon: const Icon(Icons.logout), onPressed: _logout),
         ],
       ),
-      body: Padding(
+
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            // 🔹 DAILY SUMMARY
+            const DailySummaryWidget(),
+
+            const SizedBox(height: 12),
+
+            // 🔹 GOAL
+            const GoalWidget(),
+
+            const SizedBox(height: 20),
+            const Divider(),
+
+            // 🔹 MANUAL BARCODE INPUT
             const Text(
-              'Unesi barcode ručno',
+              'Enter barcode manually',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
 
@@ -53,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
               keyboardType: TextInputType.number,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
-                hintText: 'npr. 737628064502',
+                hintText: 'e.g. 737628064502',
               ),
             ),
 
@@ -61,15 +78,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
             ElevatedButton(
               onPressed: _searchManually,
-              child: const Text('Pretraži proizvod'),
+              child: const Text('Search product'),
             ),
 
-            const SizedBox(height: 30),
+            const SizedBox(height: 16),
 
-            const Divider(),
-
-            const SizedBox(height: 20),
-
+            // 🔹 SCAN BARCODE
             ElevatedButton.icon(
               icon: const Icon(Icons.qr_code_scanner),
               label: const Text('Scan barcode'),
@@ -82,6 +96,32 @@ class _HomeScreenState extends State<HomeScreen> {
                 );
               },
             ),
+
+            const SizedBox(height: 20),
+            const Divider(),
+
+            // 🔹 TODAY PRODUCTS LIST (EDIT / DELETE)
+            const Text(
+              'Today products',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+
+            const SizedBox(height: 10),
+
+            const TodayProductsList(),
+
+            const SizedBox(height: 20),
+            const Divider(),
+
+            // 🔹 CHART
+            const Text(
+              'Calories (last 7 days)',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+
+            const SizedBox(height: 10),
+
+            const CaloriesChart(),
           ],
         ),
       ),
